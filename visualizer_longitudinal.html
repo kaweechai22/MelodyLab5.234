@@ -1,38 +1,62 @@
 <!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MelodyLab</title><meta name="description" content="MelodyLab ห้องทดลองเสียงและเก็บข้อมูล ด้วยมือถือ"><meta name="theme-color" content="#0f172a"><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="style.css"></head><body class="detailPage page-visualizer"><header><div class="wrap nav detailNav"><button class="backBtn" onclick="location.href=\'visualizer.html\'">←</button><a class="brand" href="index.html"><img src="icon-192.png" alt="MelodyLab"><span>Longitudinal Wave (คลื่นตามยาว)</span></a></div></header><main class="wrap detailMain" data-current="visualizer"><section class="section homeMenu"><div class="menuGrid"><a class="menuItem" href="visualizer.html"><span class="icon">〰️</span><h3>Wave Visualizer (ภาพจำลองคลื่น)</h3><p>ภาพจำลองคลื่นเสียงแบบสังเกตการณ์</p></a><a class="menuItem" href="measure.html"><span class="icon">🎙️</span><h3>Measure (วัดเสียง)</h3><p>ไมค์, RMS, dB, Fast/Slow, min/max/avg</p></a><a class="menuItem" href="analysis.html"><span class="icon">📊</span><h3>Analysis (วิเคราะห์)</h3><p>Scope, FFT, Autocorrelation, Top 3 Peaks</p></a><a class="menuItem" href="spectrogram.html"><span class="icon">🌈</span><h3>Spectrogram (สเปกโตรแกรม)</h3><p>ภาพเวลา–ความถี่และฮาร์มอนิก</p></a><a class="menuItem" href="generator.html"><span class="icon">🎹</span><h3>Generator (สร้างเสียง)</h3><p>Tone, Beat, White Noise</p></a><a class="menuItem" href="calibration.html"><span class="icon">🎯</span><h3>Calibration (ปรับเทียบ)</h3><p>เช็ก 440 Hz, ปรับ dB Offset, บันทึกรุ่นมือถือ</p></a><a class="menuItem" href="session.html"><span class="icon">💾</span><h3>Session (ส่งออกข้อมูล)</h3><p>Auto log, Raw Data, Export</p></a></div></section>
-<section class="section activeDetail visualizerSinglePage visualizerTemplatePage" id="visualizer" data-viz-mode="longitudinal">
+<section class="section activeDetail visualizerSinglePage visualizerTemplatePage longitudinalFocusPage" id="visualizer" data-viz-mode="longitudinal">
   <div class="sectionHead templateHead">
     <div>
-      <div class="miniTag">Visualizer Template · Observation Mode</div>
+      <div class="miniTag">Visualizer Template · Focus Mode</div>
       <h2>Longitudinal Wave (คลื่นตามยาว)</h2>
       <p class="sectionLead">ภาพจำลองสำหรับสังเกตการเคลื่อนที่ของคลื่นเสียง การสั่นของอนุภาค และความหมายของแอมพลิจูดอย่างถูกต้อง</p>
     </div>
   </div>
 
-  <div class="vizConceptStrip"><div class="conceptChip"><span class="chipIcon">→</span><div><b>Wave propagation</b><small>ทิศการเคลื่อนที่ของคลื่น</small></div></div><div class="conceptChip"><span class="chipIcon">↔</span><div><b>Particle vibration</b><small>อนุภาคสั่นไป-กลับในแนวเดียวกับคลื่น</small></div></div><div class="conceptChip"><span class="chipIcon">A</span><div><b>Amplitude A</b><small>ขนาดการกระจัดมากที่สุดจากตำแหน่งสมดุล</small></div></div><div class="conceptChip accent"><span class="chipIcon dot"></span><div><b>Observation point</b><small>อนุภาคสีแดงใช้เป็นจุดสังเกต</small></div></div></div>
-
-  <div class="visualizerTemplateGrid">
-    <div class="card mainViz templateMainViz">
-      <div class="vizSingleModeLabel"><span>〰️</span> Longitudinal Wave (คลื่นตามยาว)</div>
-      <canvas id="visualizerCanvas" width="1200" height="520"></canvas>
-      <div class="templateUnderCanvas">
-        <div class="templateInsightCard">
-          <div class="insightTitle">สิ่งที่สังเกตได้</div>
-          <ul><li>ลูกศร → แสดงทิศการเคลื่อนที่ของคลื่น</li><li>ลูกศร ↔ แสดงการสั่นไป-กลับของอนุภาค</li><li>เส้นกำกับ A แสดงแอมพลิจูดจากตำแหน่งสมดุลถึงตำแหน่งไกลสุด</li></ul>
+  <div class="visualizerTemplateGrid longitudinalFocusGrid">
+    <div class="card mainViz templateMainViz longitudinalMainViz">
+      <div class="vizMediaFrame">
+        <div class="vizSingleModeLabel"><span>〰️</span> Longitudinal Wave (คลื่นตามยาว)</div>
+        <canvas id="visualizerCanvas" width="1200" height="520"></canvas>
+        <div class="vizPlayerBar embeddedPlayerBar" aria-label="visualizer player controls">
+          <div class="playerCluster playerLeft"><div class="playerNow">Simulation Player</div></div>
+          <div class="playerCluster playerCenter">
+            <button id="vizPlayBtn" class="playerBtn playerPrimary" title="เล่น"><span class="playerIcon">▶</span></button>
+            <button id="vizPauseBtn" class="playerBtn" title="หยุด"><span class="playerIcon">⏸</span></button>
+            <button id="vizResetBtn" class="playerBtn" title="รีเซ็ต"><span class="playerIcon">↺</span></button>
+          </div>
+          <div class="vizPlayerMeta"><div class="vizPlayerTrack"><span class="trackDot"></span><span class="trackLine"></span><span class="trackTime">Loop animation</span></div></div>
         </div>
-        <div class="templateLegendCard"><div class="legendRow"><span class="legendDot cyan"></span><span>อนุภาคของตัวกลาง</span></div><div class="legendRow"><span class="legendDot red"></span><span>อนุภาคอ้างอิงสำหรับสังเกต</span></div><div class="legendRow"><span class="legendMark">│</span><span>ตำแหน่งสมดุลของอนุภาคอ้างอิง</span></div></div>
       </div>
 
-      <div class="vizPlayerBar" aria-label="visualizer player controls">
-        <div class="playerCluster playerLeft"><div class="playerNow">Simulation Player</div></div>
-        <div class="playerCluster playerCenter">
-          <button id="vizPlayBtn" class="playerBtn playerPrimary" title="เล่น"><span class="playerIcon">▶</span></button>
-          <button id="vizPauseBtn" class="playerBtn" title="หยุด"><span class="playerIcon">⏸</span></button>
-          <button id="vizResetBtn" class="playerBtn" title="รีเซ็ต"><span class="playerIcon">↺</span></button>
-        </div>
-        <div class="vizPlayerMeta"><div class="vizPlayerTrack"><span class="trackDot"></span><span class="trackLine"></span><span class="trackTime">Loop animation</span></div></div>
+      <div class="vizReadout templateReadout">
+        <div><label>Frequency f</label><b id="vizFreqOut">440 Hz</b><small>ความถี่เสียง</small></div>
+        <div><label>Amplitude A</label><b id="vizAmpOut">0.70</b><small>ขนาดการกระจัดสูงสุด</small></div>
+        <div><label>Wave Speed v</label><b id="vizSpeedOut">343 m/s</b><small>อัตราเร็วเสียง</small></div>
+        <div><label>Wavelength λ</label><b id="vizLambdaOut">0.78 m</b><small>คำนวณจาก λ = v / f</small></div>
       </div>
 
-      <div class="vizReadout templateReadout"><div><label>Frequency f</label><b id="vizFreqOut">440 Hz</b><small>ความถี่เสียง</small></div><div><label>Amplitude A</label><b id="vizAmpOut">0.70</b><small>ขนาดการกระจัดสูงสุด</small></div><div><label>Wave Speed v</label><b id="vizSpeedOut">343 m/s</b><small>อัตราเร็วเสียง</small></div><div><label>Wavelength λ</label><b id="vizLambdaOut">0.78 m</b><small>คำนวณจาก λ = v / f</small></div></div>
+      <details class="explainDetails">
+        <summary>คำอธิบายเพิ่มเติม</summary>
+        <div class="detailsBody">
+          <div class="vizConceptStrip compactExplainStrip">
+            <div class="conceptChip"><span class="chipIcon">→</span><div><b>Wave propagation</b><small>ทิศการเคลื่อนที่ของคลื่น</small></div></div>
+            <div class="conceptChip"><span class="chipIcon">↔</span><div><b>Particle vibration</b><small>อนุภาคสั่นไป-กลับในแนวเดียวกับคลื่น</small></div></div>
+            <div class="conceptChip"><span class="chipIcon">A</span><div><b>Amplitude A</b><small>ขนาดการกระจัดมากที่สุดจากตำแหน่งสมดุล</small></div></div>
+            <div class="conceptChip accent"><span class="chipIcon dot"></span><div><b>Observation point</b><small>อนุภาคสีแดงใช้เป็นจุดสังเกต</small></div></div>
+          </div>
+          <div class="templateUnderCanvas explainGrid">
+            <div class="templateInsightCard">
+              <div class="insightTitle">สิ่งที่สังเกตได้</div>
+              <ul>
+                <li>ลูกศร → แสดงทิศการเคลื่อนที่ของคลื่น</li>
+                <li>ลูกศร ↔ แสดงการสั่นไป-กลับของอนุภาค</li>
+                <li>เส้นกำกับ A แสดงแอมพลิจูดจากตำแหน่งสมดุลถึงตำแหน่งไกลสุด</li>
+              </ul>
+            </div>
+            <div class="templateLegendCard">
+              <div class="legendRow"><span class="legendDot cyan"></span><span>อนุภาคของตัวกลาง</span></div>
+              <div class="legendRow"><span class="legendDot red"></span><span>อนุภาคอ้างอิงสำหรับสังเกต</span></div>
+              <div class="legendRow"><span class="legendMark">│</span><span>ตำแหน่งสมดุลของอนุภาคอ้างอิง</span></div>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="card controlViz templateControlViz">
@@ -41,8 +65,6 @@
       <div class="field richField"><label>Amplitude A <span id="vizAmpLabel" class="valueBadge">0.70</span></label><input id="vizAmp" type="range" min="0.1" max="1.0" step="0.05" value="0.70"></div>
       <div class="field richField"><label>Wave Speed v (m/s) <span id="vizSpeedLabel" class="valueBadge">343 m/s</span></label><input id="vizSpeed" type="range" min="250" max="400" step="1" value="343"></div>
       <div class="field richField"><label>Phase / Time Speed <span id="vizTimeLabel" class="valueBadge">1.0×</span></label><input id="vizTimeSpeed" type="range" min="0.1" max="3.0" step="0.1" value="1.0"></div>
-      
-      <div class="miniInfoGrid"><div class="miniInfoCard"><b>สมดุล</b><small>ตำแหน่งเริ่มต้นของอนุภาคก่อนสั่น</small></div><div class="miniInfoCard"><b>แอมพลิจูด</b><small>ยิ่งมาก การกระจัดมากขึ้น แต่ไม่ใช่ความเร็วคลื่น</small></div><div class="miniInfoCard"><b>ความถี่</b><small>ยิ่งมาก ความยาวคลื่นจะสั้นลงเมื่อ v คงที่</small></div><div class="miniInfoCard"><b>ตัวอย่างนี้</b><small>เน้นสังเกตแนวคิด ไม่ใช่ข้อมูลจากการทดลองจริง</small></div></div>
     </div>
   </div>
 

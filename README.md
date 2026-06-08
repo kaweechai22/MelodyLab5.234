@@ -234,3 +234,9 @@
 - ปรับคำอธิบายและ concept chips ให้เหมาะกับแต่ละเรื่อง
 - เพิ่ม observation guide, legend, readout help และ parameter badges ทุกหน้า
 - คงรูปแบบ player และ data export ให้สอดคล้องกันทั้งระบบ
+
+
+## v5.29 Longitudinal Focus
+- ซ่อนคำอธิบายเพิ่มเติมของหน้า Longitudinal Wave ไว้ใน details/summary
+- เอากลุ่ม mini info cards ออก
+- ย้าย Simulation Player เข้าไปในเฟรมเดียวกับแอนิเมชัน
