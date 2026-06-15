@@ -2693,8 +2693,13 @@ function initVisualizer(){
     const modeEl=$("vizRefractionMode"), presetEl=$("vizGradientPreset"), layerEl=$("vizLayerCount");
     if(!modeEl) return;
     const isMulti = modeEl.value === 'multilayer';
+    const isGradient = modeEl.value === 'gradient';
+    const showSwap = isMulti || isGradient;
+
     const layerRow = layerEl ? layerEl.closest('.layerCountRow') : null;
     const boostEl = $("vizBendBoost"), boostRow = boostEl ? boostEl.closest('.bendBoostRow') : null;
+    const swapBtn = $("vizSwapTempBtn") || $("vizSwapTemp") || $("vizSwapRefractionSides");
+    const swapRow = swapBtn ? swapBtn.closest('.neonParamRow') : null;
     const multiPresetRow = $("vizMultiDayBtn") ? $("vizMultiDayBtn").closest('.multiLayerPresetRow') : null;
     const quickRow = $("vizTowardNormalBtn") ? $("vizTowardNormalBtn").closest('.refractionQuickPresetRow') : null;
     const gradRow = presetEl ? presetEl.closest('.gradientPresetRow') : null;
@@ -2705,6 +2710,7 @@ function initVisualizer(){
       row.style.opacity = show ? "1" : "0.55";
     };
 
+    setRow(swapRow, showSwap);
     setRow(layerRow, isMulti);
     setRow(boostRow, isMulti);
     setRow(multiPresetRow, false);

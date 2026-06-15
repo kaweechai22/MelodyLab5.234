@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MelodyLab v5.156 - Sound Refraction (การหักเหของเสียง)</title><meta name="description" content="MelodyLab ห้องทดลองเสียงและเก็บข้อมูล ด้วยมือถือ"><meta name="theme-color" content="#0f172a"><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="style.css"><meta name="melodylab-build-version" content="v5.156-sound-refraction-layout-physics-polish"></head><body class="detailPage page-visualizer"><header><div class="wrap nav detailNav"><button class="backBtn" onclick="location.href='visualizer.html'">←</button><a class="brand" href="index.html"><img src="icon-192.png" alt="MelodyLab"><span>Sound Refraction (การหักเหของเสียง)</span></a></div></header>
+<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MelodyLab v5.159 - Sound Refraction (การหักเหของเสียง)</title><meta name="description" content="MelodyLab ห้องทดลองเสียงและเก็บข้อมูล ด้วยมือถือ"><meta name="theme-color" content="#0f172a"><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="style.css"><meta name="melodylab-build-version" content="v5.159-sound-refraction-release-polish"></head><body class="detailPage page-visualizer"><header><div class="wrap nav detailNav"><button class="backBtn" onclick="location.href='visualizer.html'">←</button><a class="brand" href="index.html"><img src="icon-192.png" alt="MelodyLab"><span>Sound Refraction (การหักเหของเสียง)</span></a></div></header>
 <main class="wrap detailMain" data-current="visualizer">
 <section class="section activeDetail visualizerSinglePage visualizerTemplatePage longitudinalFocusPage rebuiltTopicPage" id="visualizer" data-viz-mode="soundRefraction">
   <div class="sectionHead templateHead">
@@ -38,18 +38,17 @@
               <li>ในโหมดหลายชั้น ใช้การประมาณอากาศเป็นชั้นบาง ๆ หลายชั้น โดยให้แต่ละคู่ชั้นเกิดการหักเหเล็กน้อยต่อเนื่องกัน</li>
               <li>ในโหมดเกรเดียนใช้ภาพจำลองเชิงแนวคิดเพื่ออธิบายแนวโน้มการเบนของเสียงในบรรยากาศ</li>
               <li>ค่าตัวอย่างบางชุดตั้งให้เห็นการเบนชัดขึ้น เพื่อใช้สอนแนวคิดการเข้าหา/ออกจากเส้นแนวฉาก</li>
-              <li>Bend Visibility เป็นการขยายภาพเพื่อการสอนเท่านั้น ส่วนค่ามุมที่แสดงยังคำนวณจากหลักฟิสิกส์เดิม</li>
+              <li>ขยายการเบน เป็นการขยายภาพเพื่อการสอนเท่านั้น ส่วนค่ามุมที่แสดงยังคำนวณจากหลักฟิสิกส์เดิม</li>
             </ul>
           </div>
         </div></div>
       </details>
     </div>
     <div class="card controlViz templateControlViz longitudinalControlViz neonControlViz">
-      <div class="panelTitleStack"><h3>Parameters (ตัวแปรควบคุม)</h3><p class="panelSubtext">เลือกโหมดให้ตรงกิจกรรม: การหักเห / การหักเหแบบหลายชั้น / การหักเหแบบอุณหภูมิไล่ระดับต่อเนื่อง</p></div>
-
-      <div class="field richField neonParamRow refractionModeRow">
+      <div class="panelTitleStack"><h3>Parameters (ตัวแปรควบคุม)</h3><p class="panelSubtext">เลือกโหมดและปรับค่าหลักตามกิจกรรม</p></div>
+<div class="field richField neonParamRow refractionModeRow">
         <div class="paramIcon">โหมด</div>
-        <div class="paramText"><label>โหมดการหักเห</label><small>เลือกโหมดจากปุ่มด้านล่างให้เห็นชัด</small></div>
+        <div class="paramText"><label>โหมดการหักเห</label><small>เลือก 1 ใน 3 โหมด</small></div>
         <select id="vizRefractionMode" class="visuallyHiddenSelect" aria-label="โหมดการหักเห">
           <option value="layer" selected>การหักเห</option>
           <option value="multilayer">การหักเหแบบหลายชั้น</option>
@@ -62,54 +61,55 @@
         </div>
         <div class="paramValueWrap"><span id="vizRefractionModeLabel" class="valueBadge">การหักเห</span></div>
       </div>
-      <div class="field richField neonParamRow">
-        <div class="paramIcon">f</div>
-        <div class="paramText"><label>Frequency f</label><small>ความถี่คงที่ในทั้งสองบริเวณ</small></div>
-        <input id="vizFreq" type="range" min="500" max="3000" step="100" value="1600">
-        <div class="paramValueWrap"><span id="vizFreqLabel" class="valueBadge">1600 Hz</span></div>
-      </div>
-      <div class="field richField neonParamRow tempTopRow">
-        <div class="paramIcon">บน</div>
-        <div class="paramText"><label>Temp. Top</label><small>อุณหภูมิอากาศด้านบน</small></div>
-        <input id="vizTempTop" type="range" min="0" max="45" step="1" value="45">
-        <div class="paramValueWrap"><span id="vizTempTopLabel" class="valueBadge">45 °C</span></div>
-      </div>
-      <div class="field richField neonParamRow tempBottomRow">
-        <div class="paramIcon">ล่าง</div>
-        <div class="paramText"><label>Temp. Bottom</label><small>อุณหภูมิอากาศด้านล่าง</small></div>
-        <input id="vizTempBottom" type="range" min="0" max="45" step="1" value="0">
-        <div class="paramValueWrap"><span id="vizTempBottomLabel" class="valueBadge">0 °C</span></div>
-      </div>
-            <div class="field richField neonParamRow layerCountRow">
-        <div class="paramIcon">N</div>
-        <div class="paramText"><label>Layers</label><small>จำนวนชั้นย่อย 3–6 ชั้น</small></div>
-        <input id="vizLayerCount" type="range" min="3" max="6" step="1" value="6">
-        <div class="paramValueWrap"><span id="vizLayerCountLabel" class="valueBadge">6 ชั้น</span></div>
-      </div>
-      <div class="field richField neonParamRow bendBoostRow">
-        <div class="paramIcon">×</div>
-        <div class="paramText"><label>Bend Visibility</label><small>ขยายภาพการเบนเฉพาะโหมดหลายชั้น เพื่อให้เห็นทิศทางชัดขึ้น</small></div>
-        <input id="vizBendBoost" type="range" min="1" max="5" step="0.5" value="2.5">
-        <div class="paramValueWrap"><span id="vizBendBoostLabel" class="valueBadge">×2.5</span></div>
-      </div>
-      <div class="field richField neonParamRow tempSwapRow">
+<div class="field richField neonParamRow tempSwapRow">
         <div class="paramIcon">↕</div>
-        <div class="paramText"><label>สลับฝั่งอุณหภูมิ</label><small>สลับค่า Temp. Top และ Temp. Bottom</small></div>
+        <div class="paramText"><label>สลับฝั่งอุณหภูมิ</label><small>ใช้ในโหมดหลายชั้นและไล่ระดับ</small></div>
         <button id="vizSwapTempBtn" class="secondary refractionSwapBtn" type="button">สลับบน/ล่าง</button>
         <div class="paramValueWrap"><span id="vizTempRelationLabel" class="valueBadge">บนอุ่นกว่า</span></div>
       </div>
-      <div class="field richField neonParamRow">
+<div class="field richField neonParamRow tempTopRow">
+        <div class="paramIcon">บน</div>
+        <div class="paramText"><label>อุณหภูมิด้านบน</label><small>อุณหภูมิอากาศด้านบน</small></div>
+        <input id="vizTempTop" type="range" min="0" max="45" step="1" value="45">
+        <div class="paramValueWrap"><span id="vizTempTopLabel" class="valueBadge">45 °C</span></div>
+      </div>
+<div class="field richField neonParamRow tempBottomRow">
+        <div class="paramIcon">ล่าง</div>
+        <div class="paramText"><label>อุณหภูมิด้านล่าง</label><small>อุณหภูมิอากาศด้านล่าง</small></div>
+        <input id="vizTempBottom" type="range" min="0" max="45" step="1" value="0">
+        <div class="paramValueWrap"><span id="vizTempBottomLabel" class="valueBadge">0 °C</span></div>
+      </div>
+<div class="field richField neonParamRow angleRow">
         <div class="paramIcon">θ</div>
-        <div class="paramText"><label>Incident Angle θ</label><small>วัดจากเส้นแนวฉาก</small></div>
+        <div class="paramText"><label>มุมตกกระทบ θ</label><small>วัดจากเส้นแนวฉาก</small></div>
         <input id="vizAngle" type="range" min="5" max="65" step="1" value="55">
         <div class="paramValueWrap"><span id="vizAngleLabel" class="valueBadge">55°</span></div>
       </div>
-      <div class="field richField neonParamRow">
+<div class="field richField neonParamRow freqRow">
+        <div class="paramIcon">f</div>
+        <div class="paramText"><label>ความถี่ f</label><small>ปรับระยะห่างของหน้าคลื่น</small></div>
+        <input id="vizFreq" type="range" min="500" max="3000" step="100" value="1600">
+        <div class="paramValueWrap"><span id="vizFreqLabel" class="valueBadge">1600 Hz</span></div>
+      </div>
+<div class="field richField neonParamRow layerCountRow">
+        <div class="paramIcon">N</div>
+        <div class="paramText"><label>จำนวนชั้น</label><small>ใช้เฉพาะโหมดหลายชั้น (3–6 ชั้น)</small></div>
+        <input id="vizLayerCount" type="range" min="3" max="6" step="1" value="6">
+        <div class="paramValueWrap"><span id="vizLayerCountLabel" class="valueBadge">6 ชั้น</span></div>
+      </div>
+<div class="field richField neonParamRow bendBoostRow">
+        <div class="paramIcon">×</div>
+        <div class="paramText"><label>ขยายการเบน</label><small>ขยายภาพการเบนเพื่อการสอน</small></div>
+        <input id="vizBendBoost" type="range" min="1" max="5" step="0.5" value="2.5">
+        <div class="paramValueWrap"><span id="vizBendBoostLabel" class="valueBadge">×2.5</span></div>
+      </div>
+<div class="field richField neonParamRow timeRow">
         <div class="paramIcon">◷</div>
-        <div class="paramText"><label>อัตราเวลา</label><small>Time Speed</small></div>
+        <div class="paramText"><label>ความเร็วแอนิเมชัน</label><small>ปรับความเร็วของภาพเคลื่อนไหว</small></div>
         <input id="vizTimeSpeed" type="range" min="0.10" max="3.0" step="0.10" value="1.0">
         <div class="paramValueWrap"><span id="vizTimeLabel" class="valueBadge">1.0×</span></div>
       </div>
+
     </div>
   </div>
   <div class="card localExportCard templateExportCard" data-export-name="soundRefraction">

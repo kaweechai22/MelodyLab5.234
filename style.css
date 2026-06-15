@@ -2792,3 +2792,242 @@ main.wrap{
     padding:9px 10px !important;
   }
 }
+
+
+/* v5.157: show temperature-side swap only for multilayer and gradient */
+#visualizer[data-viz-mode="soundRefraction"] .refractionModeRow + .neonParamRow .paramText small{
+  font-size:.70rem !important;
+}
+
+
+/* v5.158 — Sound Refraction compact UI polish */
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:22px !important;
+  row-gap:0 !important;
+  align-items:start !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .panelTitleStack{
+  grid-column:1 / -1 !important;
+  margin-bottom:2px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .refractionModeRow,
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .refractionModeRow + .neonParamRow{
+  grid-column:1 / -1 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .neonParamRow{
+  margin:0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .neonParamRow{
+  grid-template-columns:40px minmax(0,1fr) !important;
+  grid-template-areas:
+    "icon text"
+    "icon slider"
+    "icon value" !important;
+  gap:6px 10px !important;
+  padding:10px 0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramIcon{
+  width:34px !important;
+  height:34px !important;
+  min-width:34px !important;
+  font-size:.82rem !important;
+  border-radius:12px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramText label{
+  font-size:.95rem !important;
+  font-weight:900 !important;
+  line-height:1.2 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramText small{
+  font-size:.73rem !important;
+  line-height:1.32 !important;
+  color:#94a3b8 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .modeSegmented{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:8px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .modePill{
+  padding:10px 8px !important;
+  font-size:.90rem !important;
+  border-radius:14px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .refractionSwapBtn{
+  min-height:42px !important;
+  padding:10px 12px !important;
+  border-radius:14px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .valueBadge{
+  padding:5px 9px !important;
+  font-size:.76rem !important;
+  border-radius:999px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz input[type="range"]{
+  margin-top:1px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz .panelTitleStack p{
+  font-size:.82rem !important;
+  line-height:1.35 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz .field:has(#vizTimeSpeed){
+  grid-column:1 / -1 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz .field:has(#vizLayerCount),
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz .field:has(#vizBendBoost){
+  background:transparent !important;
+}
+
+@media (max-width:980px){
+  #visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz{
+    grid-template-columns:1fr !important;
+    column-gap:0 !important;
+  }
+  #visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .panelTitleStack,
+  #visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .neonParamRow{
+    grid-column:1 / -1 !important;
+  }
+}
+
+@media (max-width:720px){
+  #visualizer[data-viz-mode="soundRefraction"] .modeSegmented{
+    grid-template-columns:1fr !important;
+  }
+  #visualizer[data-viz-mode="soundRefraction"] .modePill{
+    padding:10px 12px !important;
+  }
+}
+
+
+/* v5.159 — Sound Refraction release polish */
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  column-gap:12px !important;
+  row-gap:10px !important;
+  padding:18px 18px 16px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .panelTitleStack,
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .refractionModeRow,
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .tempSwapRow,
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .timeRow{
+  grid-column:1 / -1 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz > .panelTitleStack{
+  margin-bottom:0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz .panelTitleStack h3{
+  font-size:1.18rem !important;
+  line-height:1.2 !important;
+  margin:0 0 2px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz .panelTitleStack p{
+  font-size:.78rem !important;
+  line-height:1.3 !important;
+  margin:0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .neonParamRow{
+  border-bottom:none !important;
+  border:1px solid rgba(148,163,184,.12) !important;
+  background:rgba(7,17,37,.46) !important;
+  border-radius:15px !important;
+  grid-template-columns:34px minmax(0,1fr) auto !important;
+  grid-template-areas:
+    "icon text value"
+    "icon slider slider" !important;
+  gap:5px 8px !important;
+  padding:9px 10px !important;
+  min-height:0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramIcon{
+  grid-area:icon !important;
+  width:32px !important;
+  height:32px !important;
+  min-width:32px !important;
+  border-radius:11px !important;
+  font-size:.78rem !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14) !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramText{
+  grid-area:text !important;
+  min-width:0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramText label{
+  font-size:.88rem !important;
+  line-height:1.15 !important;
+  margin:0 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramText small{
+  font-size:.68rem !important;
+  line-height:1.25 !important;
+  margin-top:1px !important;
+  color:#91a4bd !important;
+  font-weight:700 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .neonParamRow input,
+#visualizer[data-viz-mode="soundRefraction"] .neonParamRow select,
+#visualizer[data-viz-mode="soundRefraction"] .neonParamRow .actions,
+#visualizer[data-viz-mode="soundRefraction"] .modeSegmented,
+#visualizer[data-viz-mode="soundRefraction"] .refractionSwapBtn{
+  grid-area:slider !important;
+  width:100% !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .paramValueWrap{
+  grid-area:value !important;
+  justify-content:flex-end !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .neonParamRow .valueBadge{
+  min-width:0 !important;
+  padding:4px 8px !important;
+  font-size:.72rem !important;
+  border-radius:999px !important;
+  box-shadow:none !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .modeSegmented{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:7px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .modePill{
+  padding:9px 8px !important;
+  font-size:.86rem !important;
+  border-radius:12px !important;
+  box-shadow:none !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .modePill.active{
+  box-shadow:0 0 0 1px rgba(34,211,238,.18) !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .refractionModeRow,
+#visualizer[data-viz-mode="soundRefraction"] .tempSwapRow{
+  background:rgba(6,18,45,.62) !important;
+  border-color:rgba(34,211,238,.18) !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .refractionSwapBtn{
+  min-height:36px !important;
+  padding:8px 10px !important;
+  border-radius:12px !important;
+  font-size:.84rem !important;
+  font-weight:900 !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] input[type="range"]{
+  height:5px !important;
+}
+#visualizer[data-viz-mode="soundRefraction"] .timeRow{
+  background:rgba(12,18,40,.40) !important;
+}
+
+@media(max-width:980px){
+  #visualizer[data-viz-mode="soundRefraction"] .controlViz.templateControlViz.longitudinalControlViz.neonControlViz{
+    grid-template-columns:1fr !important;
+    row-gap:8px !important;
+  }
+}
+@media(max-width:720px){
+  #visualizer[data-viz-mode="soundRefraction"] .modeSegmented{
+    grid-template-columns:1fr !important;
+  }
+  #visualizer[data-viz-mode="soundRefraction"] .neonParamRow{
+    grid-template-columns:32px minmax(0,1fr) auto !important;
+    padding:9px 9px !important;
+  }
+}
